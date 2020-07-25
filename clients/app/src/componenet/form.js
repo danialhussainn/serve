@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+import axios from 'axios'
 
 function Copyright() {
   return (
@@ -56,7 +56,18 @@ export default function SignUp() {
     }
 const click=(e)=>{
     e.preventDefault()
-    console.log(state)
+    axios.post('http://localhost:5000/',state)
+    .then(function (response) {
+      // handle success
+      console.log(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
 }
   return (
     <Container component="main" maxWidth="xs">
